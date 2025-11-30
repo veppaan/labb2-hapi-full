@@ -18,37 +18,7 @@ const init = async () => {
         console.error("Error connecting to database: " + error);
     });
 
-    //Model för MongoDB
-    const Meal = mongoose.model("Meal", {
-        title: String,
-        price: Number,
-        lactose: Boolean
-    });
-    server.route([
-        {
-            method: "GET",
-            path: "/meals",
-            handler: async (request, h) => {
-                try {
-                    return await Meal.find();
-                } catch(err) {
-                    return h.response("Error with get-route: " + err).code(500);
-                }
-            }
-        },
-        {
-            method: "POST",
-            path: "/meals",
-            handler: async (request, h) => {
-                try {
-                    const meal = new Meal(request.payload);
-                    return await meal.save();
-                } catch(err) {
-                    return h.response("Error with post-route: " + err).code(500);
-                }
-            }
-        }
-    ])
+    require("./routes/meal.route")(server);
 
     await server.start();
     console.log('Server running on %s', server.info.uri);
