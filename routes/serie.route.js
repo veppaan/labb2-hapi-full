@@ -5,12 +5,17 @@ module.exports = (server) => {
     server.route([
         {
             method: "GET",
-            path: "/meals",
+            path: "/series",
             handler: serieController.getSeries
         },
         {
+            method: "GET",
+            path: "/series/{id}",
+            handler: serieController.getOneSerie
+        },
+        {
             method: "POST",
-            path: "/meals",
+            path: "/series",
             handler: serieController.addSerie,
             options: {
                 validate: {
@@ -21,6 +26,16 @@ module.exports = (server) => {
                     })
                 }
             }
+        },
+        {
+            method: "UPDATE",
+            path: "/series/{id}",
+            handler: serieController.updateSerie
+        },
+        {
+            method: "DELETE",
+            path: "/series/{id}",
+            handler: serieController.deleteSerie
         }
     ])
 }

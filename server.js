@@ -1,5 +1,5 @@
 'use strict';
-
+//Använder hapi, mongoose och dotenv
 const Hapi = require('@hapi/hapi');
 const mongoose = require("mongoose");
 require("dotenv").config();
