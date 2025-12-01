@@ -1,6 +1,6 @@
-const Meal = require("../models/meal.model");
+const Meal = require("../models/serie.model");
 
-exports.getMeals = async(request, h) => {
+exports.getSeries = async(request, h) => {
     try {
         return await Meal.find();
     } catch(err) {
@@ -8,7 +8,7 @@ exports.getMeals = async(request, h) => {
     }
 }
 
-exports.addMeal = async(request, h) => {
+exports.addSerie = async(request, h) => {
     try {
         const meal = new Meal(request.payload);
         return await meal.save();

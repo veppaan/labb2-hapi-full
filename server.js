@@ -18,7 +18,7 @@ const init = async () => {
         console.error("Error connecting to database: " + error);
     });
 
-    require("./routes/meal.route")(server);
+    require("./routes/serie.route")(server);
 
     await server.start();
     console.log('Server running on %s', server.info.uri);

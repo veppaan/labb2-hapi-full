@@ -1,4 +1,4 @@
-const mealController = require("../controllers/meal.controller");
+const serieController = require("../controllers/serie.controller");
 const Joi = require("joi");
 
 module.exports = (server) => {
@@ -6,18 +6,18 @@ module.exports = (server) => {
         {
             method: "GET",
             path: "/meals",
-            handler: mealController.getMeals
+            handler: serieController.getSeries
         },
         {
             method: "POST",
             path: "/meals",
-            handler: mealController.addMeal,
+            handler: serieController.addSerie,
             options: {
                 validate: {
                     payload: Joi.object({
                         title: Joi.string().min(3).max(20).required(),
-                        price: Joi.number().min(1).max(200).required(),
-                        lactose: Joi.boolean()
+                        points: Joi.number().min(1).max(10).required(),
+                        seen: Joi.boolean()
                     })
                 }
             }
