@@ -16,8 +16,13 @@ module.exports = (server) => {
                 validate: {
                     payload: Joi.object({
                         title: Joi.string().min(3).max(20).required(),
-                        price: Joi.number().min(1).max(200).required()
-                    })
+                        price: Joi.number().min(1).max(200).required(),
+                        lactose: Joi.boolean()
+                    }),
+                    failAction: (request, h, error) => {
+                        console.log('Validation error:', error);
+                        throw error;
+                    }
                 }
             }
         }
