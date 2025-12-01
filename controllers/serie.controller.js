@@ -1,5 +1,14 @@
 const Serie = require("../models/serie.model");
 
+//Ge välkomsmeddelande
+exports.welcomeMsg = async(request, h) => {
+    try {
+        return "Välkommen till API:et, lägg till ändelsen /series för att komma till serierna";
+    } catch(err) {
+        return h.response("Error with welcome-route: " + err).code(500);
+    }
+}
+
 //Hämta alla serier
 exports.getSeries = async(request, h) => {
     try {

@@ -5,6 +5,11 @@ module.exports = (server) => {
     server.route([
         {
             method: "GET",
+            path: "/",
+            handler: serieController.welcomeMsg
+        },
+        {
+            method: "GET",
             path: "/series",
             handler: serieController.getSeries
         },
