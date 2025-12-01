@@ -28,7 +28,7 @@ module.exports = (server) => {
             }
         },
         {
-            method: "UPDATE",
+            method: "PUT",
             path: "/series/{id}",
             handler: serieController.updateSerie
         },

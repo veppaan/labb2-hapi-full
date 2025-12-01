@@ -29,7 +29,7 @@ exports.addSerie = async(request, h) => {
 //Uppdatera serie
 exports.updateSerie = async(request, h) => {
     try {
-        return await Serie.findByIdAndUpdate(request.params.id, value,{ new: true, runValidators: true });
+        return await Serie.findByIdAndUpdate(request.params.id, request.payload,{ new: true, runValidators: true });
     } catch(err) {
         return h.response("Error with update-route: " + err).code(500);
     }
