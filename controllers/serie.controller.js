@@ -20,7 +20,12 @@ exports.getSeries = async(request, h) => {
 //Hämta en serie
 exports.getOneSerie = async(request, h) => {
     try {
-        return await Serie.findById(request.params.id);
+        const serie = await Serie.findById(request.params.id);
+        //Kollar om serie finns, om inte så skeivs ett felmeddelande
+        if(!serie){
+            return h.response({ message: "Serie med angivet id hittas inte, kontrollera och försök igen"}).code(404);
+        }
+        return 
     } catch(err) {
         return h.response("Error with get-route: " + err).code(500);
     }
@@ -31,7 +36,7 @@ exports.addSerie = async(request, h) => {
         const serie = new Serie(request.payload);
         return await serie.save();
     } catch(err) {
-        return h.response("Error with post-route: " + err).code(500);
+        return h.response("Error with post-route: " + err.messages).code(500);
     }
 }
 
