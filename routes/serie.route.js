@@ -54,8 +54,8 @@ module.exports = (server) => {
                         }),
                         seen: Joi.boolean().required()
                         .messages({
-                            'boolean.base': 'Seen/Sedd måste vara true eller false!',
-                            'any.required': 'Seen/Sedd är obligatorisk att fylla i!'
+                            'boolean.base': 'Seen måste vara true eller false!',
+                            'any.required': 'Seen är obligatorisk att fylla i!'
                         }),
                     }),
                     failAction: failAction
@@ -63,6 +63,7 @@ module.exports = (server) => {
             }
         },
         {
+            //Uppdatera en serie med angivet id
             method: "PUT",
             path: "/series/{id}",
             handler: serieController.updateSerie,
@@ -98,6 +99,7 @@ module.exports = (server) => {
             }
         },
         {
+            //Radera en serie med angivet id
             method: "DELETE",
             path: "/series/{id}",
             handler: serieController.deleteSerie

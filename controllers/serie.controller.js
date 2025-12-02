@@ -21,11 +21,12 @@ exports.getSeries = async(request, h) => {
 exports.getOneSerie = async(request, h) => {
     try {
         const serie = await Serie.findById(request.params.id);
-        //Kollar om serie finns, om inte så skeivs ett felmeddelande
+        //Kollar om serie finns, om inte så skrivs ett felmeddelande
         if(!serie){
             return h.response({ message: "Serie med angivet id hittas inte, kontrollera och försök igen"}).code(404);
+        } else {
+            return await Serie.findById(request.params.id);
         }
-        return 
     } catch(err) {
         return h.response("Error with get-route: " + err).code(500);
     }
@@ -43,7 +44,18 @@ exports.addSerie = async(request, h) => {
 //Uppdatera serie
 exports.updateSerie = async(request, h) => {
     try {
-        return await Serie.findByIdAndUpdate(request.params.id, request.payload,{ new: true, runValidators: true });
+        const serie = await Serie.findById(request.params.id);
+        //Kollar om serie finns, om inte så skrivs ett felmeddelande
+        if(!serie){
+            return h.response({ message: "Serie med angivet id hittas inte, kontrollera och försök igen"}).code(404);
+        } else {
+            const updateSerie = await Serie.findByIdAndUpdate(request.params.id, request.payload,{ new: true, runValidators: true });
+            if(!updateSerie){
+                return h.response({ message: "Serie med angivet id hittas inte, kontrollera och försök igen"}).code(404);
+            } else {
+                return h.response({message: `Uppdateringen lyckades med serien ${updateSerie.title}`});
+            }
+        }
     } catch(err) {
         return h.response("Error with update-route: " + err).code(500);
     }
