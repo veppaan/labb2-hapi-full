@@ -44,18 +44,13 @@ exports.addSerie = async(request, h) => {
 //Uppdatera serie
 exports.updateSerie = async(request, h) => {
     try {
-        const serie = await Serie.findById(request.params.id);
-        //Kollar om serie finns, om inte så skrivs ett felmeddelande
-        if(!serie){
-            return h.response({ message: "Serie med angivet id hittas inte, kontrollera och försök igen"}).code(404);
-        } else {
+            //Uppdaterar serien
             const updateSerie = await Serie.findByIdAndUpdate(request.params.id, request.payload,{ new: true, runValidators: true });
             if(!updateSerie){
                 return h.response({ message: "Serie med angivet id hittas inte, kontrollera och försök igen"}).code(404);
             } else {
                 return h.response({message: `Uppdateringen lyckades med serien ${updateSerie.title}`});
             }
-        }
     } catch(err) {
         return h.response("Error with update-route: " + err).code(500);
     }
@@ -64,8 +59,13 @@ exports.updateSerie = async(request, h) => {
 //Radera serie
 exports.deleteSerie = async(request, h) => {
     try {
-        return await Serie.findByIdAndDelete(request.params.id);
-    } catch(err) {
+            const deleteSerie = await Serie.findByIdAndDelete(request.params.id);
+            if(!deleteSerie){
+                return h.response({ message: "Serie med angivet id hittas inte, kontrollera och försök igen"}).code(404);
+            } else {
+                return h.response({message: `Raderingen lyckades med serien ${deleteSerie.title}`});
+            }
+        } catch(err) {
         return h.response("Error with delete-route: " + err).code(500);
     }
 }

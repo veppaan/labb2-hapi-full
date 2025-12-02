@@ -7,9 +7,9 @@ Tabellens namn heter "series" som skapats med hjälp av MongoDB och mongoose.
 Tabellens innehåll:
 - _id
 - title(string)
-- points(float)
+- points(number)
 - seen(boolean)
-- created(Date)
+- __v: 0 (som skapas automatiskt av mongodb)
 
 
 Användning:
