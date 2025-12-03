@@ -3,6 +3,8 @@
 Ett API byggt med hapi. 
 API:et hanterar en tabell med serier
 
+API:et är publicerad på [https://labb2-hapi.onrender.com/series](URL) med hjälp av Render
+
 Tabellens namn heter "series" som skapats med hjälp av MongoDB och mongoose.
 Tabellens innehåll:
 - _id
