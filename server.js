@@ -19,11 +19,11 @@ const init = async () => {
     });
 
     require("./routes/serie.route")(server);
-
+    //Startar server
     await server.start();
     console.log('Server running on %s', server.info.uri);
 };
-
+//Fångar fel
 process.on('unhandledRejection', (err) => {
 
     console.log(err);

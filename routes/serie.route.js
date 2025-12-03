@@ -29,7 +29,7 @@ module.exports = (server) => {
             handler: serieController.getOneSerie
         },
         {
-            //POST-route med valideringar och meddelanden
+            //POST-route med valideringar och meddelanden 
             method: "POST",
             path: "/series",
             handler: serieController.addSerie,
