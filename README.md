@@ -30,3 +30,10 @@ Seriens JSON-struktur kan se ut såhär:
     "points": 8.5,
     "category": true
 }
+```
+
+Exempel för testning:
+För att testa POST: ange metod POST, skriv [https://labb2-hapi.onrender.com/series](URL) och lägg in ovan json i body.
+![POST-bild](images/bild1-post.png)
+För att hämta alla serier med GET: ange metod GET, skriv [https://labb2-hapi.onrender.com/series](URL)
+![GET-bild](images/bild2-get.png)
