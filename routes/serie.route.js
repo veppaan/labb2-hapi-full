@@ -44,11 +44,9 @@ module.exports = (server) => {
                             'string.min': 'Titel får inte vara mindre än 3 tecken!',
                             'string.max': 'Titel får inte vara längre än 50 tecken!'
                         }),
-                        points: Joi.number().precision(1).min(1).max(10).required()
+                        points: Joi.number().precision(1).min(1).max(10)
                         .messages({
                             'number.base': 'Poäng måste vara ett nummer!',
-                            'number.precision': 'Poängen får bara ha ett decimaltal, exempelvis 7.5!',
-                            'any.required': 'Poäng är obligatorisk att fylla i!',
                             'number.min': 'Poäng får inte vara mindre än 1!',
                             'number.max': 'Poäng får inte vara högre än 10!'
                         }),
@@ -78,20 +76,16 @@ module.exports = (server) => {
                             'string.min': 'Titel får inte vara mindre än 3 tecken!',
                             'string.max': 'Titel får inte vara längre än 50 tecken!'
                         }),
-                        points: Joi.number().precision(1).min(1).max(10).required()
+                        points: Joi.number().precision(1).min(1).max(10)
                         .messages({
                             'number.base': 'Poäng måste vara ett nummer!',
-                            'number.precision': 'Poängen får bara ha ett decimaltal, exempelvis 7.5!',
-                            'any.required': 'Poäng är obligatorisk att fylla i!',
                             'number.min': 'Poäng får inte vara mindre än 1!',
                             'number.max': 'Poäng får inte vara högre än 10!'
                         }),
                         seen: Joi.boolean().required()
                         .messages({
-                            'boolean.base': '"Seen" måste vara true eller false!',
-                            'any.required': '"Seen" är obligatorisk att fylla i!',
-                            'number.min': 'Poäng får inte vara mindre än 1!',
-                            'number.max': 'Poäng får inte vara högre än 10!'
+                            'boolean.base': 'Seen måste vara true eller false!',
+                            'any.required': 'Seen är obligatorisk att fylla i!'
                         }),
                     }),
                     failAction: failAction
